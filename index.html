@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>LALELÍ Babés | Ropa para bebés de 0 a 24 meses</title>
+    <meta name="description" content="Ropa para bebes de 0 a 24 meses, por mayor y por menor. Tienda oficial Lalelí.">
+    <meta name="theme-color" content="#FAF7F2">
+    
+    <!-- Tipografía Poppins oficial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', '-apple-system', 'sans-serif'],
+                    },
+                    colors: {
+                        laleli: {
+                            orange: '#F68634',
+                            deep: '#E27220',
+                            charcoal: '#4A4A4A',
+                            soft: '#7A7672',
+                            miel: '#E59B3C',
+                            salvia: '#439B78',
+                            lila: '#8C82B5',
+                            cream: '#FAF7F2'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            background-color: #FAF7F2;
+            color: #4A4A4A;
+            margin: 0;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================================================
+           1. SISTEMA COMPLETO DE OLAS TEATRALES INFINITAS (EN TODO EL FONDO)
+           ========================================================================== */
+        .waves-theatre-fullstage {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 50% 15%, rgba(255, 255, 255, 0.98) 0%, rgba(250, 247, 242, 0.82) 55%, rgba(246, 239, 230, 0.96) 100%);
+        }
+
+        .wave-curtain {
+            position: absolute;
+            inset: -40px 0;
+            width: 100%;
+            height: calc(100% + 80px);
+            background-repeat: repeat;
+            will-change: background-position;
+        }
+
+        /* Capa Teatral A: Ondas amplias lentas hacia la derecha (capa de fondo) */
+        .wave-curtain-a {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='58' viewBox='0 0 160 58'%3E%3Cpath fill='none' stroke='%23F68634' stroke-opacity='0.11' stroke-width='1.6' stroke-linecap='round' d='M0,29 Q40,15 80,29 T160,29'/%3E%3C/svg%3E");
+            background-size: 160px 58px;
+            animation: theatreFlowA 48s linear infinite;
+        }
+
+        /* Capa Teatral B: Ondas intermedias hacia la izquierda (capa media a destiempo) */
+        .wave-curtain-b {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='70' viewBox='0 0 130 70'%3E%3Cpath fill='none' stroke='%23E59B3C' stroke-opacity='0.14' stroke-width='1.7' stroke-linecap='round' d='M0,35 Q32.5,20 65,35 T130,35'/%3E%3C/svg%3E");
+            background-size: 130px 70px;
+            animation: theatreFlowB 36s linear infinite;
+        }
+
+        /* Capa Teatral C: Ondas más cerradas hacia la derecha (capa frontal) */
+        .wave-curtain-c {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='84' viewBox='0 0 190 84'%3E%3Cpath fill='none' stroke='%23F68634' stroke-opacity='0.12' stroke-width='1.8' stroke-linecap='round' d='M0,42 Q47.5,25 95,42 T190,42'/%3E%3C/svg%3E");
+            background-size: 190px 84px;
+            animation: theatreFlowC 28s linear infinite;
+        }
+
+        @keyframes theatreFlowA {
+            0%   { background-position: 0 0; }
+            100% { background-position: 320px 0; }
+        }
+
+        @keyframes theatreFlowB {
+            0%   { background-position: 0 0; }
+            100% { background-position: -260px 0; }
+        }
+
+        @keyframes theatreFlowC {
+            0%   { background-position: 0 0; }
+            100% { background-position: 380px 0; }
+        }
+
+        /* ==========================================================================
+           2. ESTILOS DE COMPONENTES & BOTONES ESPONJOSOS
+           ========================================================================== */
+        .nuance-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.82) 100%);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 
+                0 3px 12px -2px rgba(226, 114, 32, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.2s ease;
+        }
+
+        .nuance-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 10px 24px -4px rgba(246, 134, 52, 0.12),
+                0 2px 6px rgba(0, 0, 0, 0.03);
+            border-color: rgba(246, 134, 52, 0.28);
+        }
+
+        .nuance-btn:active {
+            transform: scale(0.985);
+        }
+
+        .support-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 18px -2px rgba(180, 140, 110, 0.08);
+        }
+
+        /* ==========================================================================
+           3. ANIMACIÓN FLUIDA & PAUSADA DEL TEXTO DE BENEFICIOS
+           ========================================================================== */
+        .benefit-viewport {
+            height: 18px;
+            overflow: hidden;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .benefit-text {
+            display: inline-block;
+            transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+            will-change: transform, opacity;
+            white-space: nowrap;
+        }
+
+        .benefit-text.slide-out {
+            transform: translateY(-110%);
+            opacity: 0;
+        }
+
+        .benefit-text.slide-in-prep {
+            transition: none !important;
+            transform: translateY(110%);
+            opacity: 0;
+        }
+
+        /* Indicador en respiración calmada */
+        @keyframes softBreathe {
+            0%, 100% { opacity: 0.9; transform: scale(1); }
+            50%      { opacity: 0.35; transform: scale(0.85); }
+        }
+        .soft-dot {
+            animation: softBreathe 3.2s ease-in-out infinite;
+        }
+
+        /* ==========================================================================
+           4. BOTÓN FLOTANTE WHATSAPP (CHIP PREGUNTAR + BOTÓN CIRCULAR)
+           ========================================================================== */
+        .floating-whatsapp-wrap {
+            position: fixed;
+            bottom: 20px;
+            right: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-label-chip {
+            background: #FFFFFF;
+            color: #128C7E;
+            font-size: 0.74rem;
+            font-weight: 600;
+            padding: 6px 13px;
+            border-radius: 999px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(37, 211, 102, 0.35);
+            letter-spacing: 0.02em;
+        }
+
+        .floating-action-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .floating-whatsapp-wrap:hover .floating-action-btn {
+            transform: scale(1.08) rotate(6deg);
+        }
+
+        .floating-action-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased min-h-screen flex flex-col items-center justify-center p-4 sm:p-5 relative">
+
+    <!-- Ondas teatrales infinitas en todo el fondo -->
+    <div class="waves-theatre-fullstage" aria-hidden="true">
+        <div class="wave-curtain wave-curtain-a"></div>
+        <div class="wave-curtain wave-curtain-b"></div>
+        <div class="wave-curtain wave-curtain-c"></div>
+    </div>
+
+    <main class="w-full max-w-[410px] flex flex-col gap-4 relative z-10 my-auto">
+        
+        <!-- HEADER CÁLIDO & LOGO OFICIAL -->
+        <header class="flex flex-col items-center text-center pt-1 pb-1">
+            <a href="https://lalelibebes.mitiendanube.com/" class="transition-transform duration-200 hover:scale-[1.02]" aria-label="LALELÍ Babés">
+                <svg class="w-52 sm:w-56 h-auto drop-shadow-sm" viewBox="0 0 476.68 149.98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="#F68634">
+                        <path d="M96.85,149.98c-9.86-3.86-15.71-11.08-18.27-21.23-.36-1.42-1.63-3.16-2.92-3.69-5.49-2.26-11.01-4.74-16.78-5.97-6.51-1.38-16.42,8.06-15.86,14.69.15,1.77,2.18,3.33,3.15,5.09.89,1.63,2.47,3.77,1.99,5.01-.52,1.34-3,2.47-4.75,2.7-5.2.68-10.42-2.52-11.82-7.87-1.06-4.05-.81-8.45-1.01-12.7-.07-1.39.27-2.8.44-4.28-5.99.28-16.07,7.29-17.37,12.28-.45,1.75.31,4.18,1.29,5.85,2.35,3.98,1.58,6.4-2.93,7.57-4.55,1.18-10.44-1.46-11.31-6.51-.92-5.33-1.11-11.37.51-16.41,2.61-8.09,6.73-15.75,10.7-23.34,1.9-3.63,2.35-5.99-.65-9.51-13.14-15.43-5.76-34.5,4.81-44.01.37-.33.77-.78,1.21-.86,2.27-.4,4.57-.69,6.86-1.02-.49,2.11-.53,4.49-1.57,6.29-2.23,3.86-5.26,7.26-7.47,11.13-4.2,7.37-1.22,16.44,6.75,19.42,2.83,1.06,6.48.17,9.73-.12,9.88-.86,19.75-1.87,29.63-2.8,7.5-.7,14.15-3.38,19.76-8.42.83-.75,2.07-2.1,1.86-2.77-.95-2.92-2.92-5.58-3.48-8.52-.65-3.42-1.8-5.42-5.28-6.83-13.32-5.39-23.26-20.48-22.83-33.9.19-6.01,2.19-7.57,8.19-6.36,9.21,1.86,17.25,6.03,23.74,12.76,2.61,2.71,4.59,3.59,8.5,2.11,4.05-1.53,8.8-2,13.17-1.72,4.83.3,7.42-1.77,10.39-5.09,5.82-6.51,11.88-12.96,18.64-18.45,6.04-4.9,10.9-2.35,10.3,5.38-.67,8.64-2,17.43-4.68,25.62-1.37,4.18-6.35,7.17-9.59,10.78-1.41,1.58-3.42,3.27-3.68,5.11-1.22,8.72-4.27,16.21-11.58,21.71-1.19.89-1.81,3.13-1.89,4.78-.75,15.11-5.12,28.88-14.49,40.99-1.08,1.4-1.42,3.67-1.41,5.53.01,3.79.26,7.62.89,11.36.26,1.54,1.46,3.25,2.74,4.25,6.28,4.89,6.12,7.36-.97,10.88-.59.29-1.1.72-1.65,1.08h-1Z"/>
+                        <path d="M351.57,141.77c-5.98,0-11.96.03-17.94,0-4.41-.03-6.35-1.82-6.17-6.67.96-26.11,1.61-52.23,2.34-78.34.07-2.47.18-4.59,3.52-4.83,13.24-.96,26.47-2.14,39.72-3,1.6-.1,4.57,1.05,4.72,1.97.55,3.47.29,7.09.02,10.62-.02.31-2.37.58-3.64.63-7.13.26-14.27.39-21.39.69-4.48.19-7.02,2.86-7.71,7.08-.8,4.87-1.27,9.8-1.85,14.71-.46,3.84,1.17,5.49,5.14,5.08,7.25-.75,14.52-1.57,21.8-1.8,2.24-.07,6.09,1.25,6.51,2.7.99,3.43.53,7.34.21,11.02-.04.48-2.69,1-4.15,1.04-9.38.24-18.77.24-28.15.65-.99.04-2.63,2.15-2.71,3.39-.43,6.59-.56,13.21-.6,19.82-.02,3.45,2.45,3.73,5.23,3.62,7.47-.28,14.94-.41,22.41-.63,3.98-.12,6.63.72,6.6,5.71-.03,4.77-2.3,5.99-6.45,5.92-5.81-.1-11.62-.02-17.43-.02,0,.22,0,.44,0,.66Z"/>
+                        <path d="M233.92,48.56c.15,0,.81,0,1.48,0,7.81.04,7.88.03,9.11,7.72,3.88,24.11,7.71,48.22,11.54,72.34,1.24,7.81-2.18,11.33-10.18,10.06-1.23-.19-2.83-2.1-3.13-3.46-2.07-9.34-4.09-18.72-5.6-28.16-.68-4.23-2.38-5.74-6.53-5.17-3.79.52-7.7-.55-8.52,5.62-1.12,8.46-3.66,16.74-5.66,25.07-.3,1.27-.93,2.47-1.49,3.66-1.4,2.95-4.07,4.59-6.82,3.18-1.36-.7-2.25-4.15-1.87-6.06,2.21-11.17,5.12-22.21,7.28-33.39,2.6-13.44,4.87-26.95,6.97-40.48,1.8-11.67,2.1-10.33,13.41-10.95ZM233.18,63.86l-2.06-.11c-.6.51-1.59.92-1.75,1.54-1.64,6.37-3.27,12.76-4.5,19.22-.13.7,2.39,2.73,3.6,2.66,2.29-.13,6.49-1.39,6.48-2.08-.19-7.09-1.08-14.16-1.77-21.23Z"/>
+                        <path d="M407.8,124.96c2.81-.17,6.04-.46,9.27-.53,4.81-.1,9.63-.16,14.43-.04,3.84.1,6.69,1.91,6.11,6.07-.5,3.57-.84,7.61-6.55,7.44-10.28-.31-20.58-.18-30.87-.03-4.2.06-5.92-1.4-5.8-5.79.53-18.49.92-36.99,1.12-55.5.07-6.09-.77-12.18-.85-18.28-.07-5.47,1.43-6.36,7.48-6.43,4.92-.06,6.21,2.2,6.05,6.74-.59,16.01-1.02,32.03-1.26,48.05-.09,5.68.53,11.37.88,18.29Z"/>
+                        <path d="M285.15,124.91c1.4,0,3.18.04,4.95,0,5.97-.17,11.95-.49,17.92-.52,3.79-.02,7.08,1.07,6.99,5.79-.09,5.04-2.38,7.58-6.9,7.61-9.63.08-19.27.17-28.9.04-7.12-.1-7.47-.48-7.37-7.35.27-18.02.75-36.03.97-54.05.06-5.27-.37-10.56-.81-15.82-.6-7.32,3.82-11.05,10.63-8.13,1.65.71,3.02,4.16,2.99,6.33-.23,16.02-.96,32.04-1.28,48.07-.11,5.69.48,11.39.8,18.05Z"/>
+                        <path d="M166.41,124.63c7.71,0,15.13.08,22.54-.02,6.64-.09,9.63,3.52,7.28,9.57-.6,1.54-2.89,3.41-4.45,3.45-11.13.28-22.27.06-33.41.15-3.68.03-4.46-1.89-4.42-5,.16-10.76.2-21.51.31-32.27.14-14.06.34-28.12.4-42.18.02-5.77.47-6.38,6.06-6.36,6.4.02,7.02.68,6.87,6.68-.42,16.54-.82,33.07-1.17,49.61-.11,5.2-.02,10.41-.02,16.38Z"/>
+                        <path d="M464.26,79.85c-.54,15.71-1.06,31.42-1.64,47.12-.1,2.64-.34,5.29-.76,7.9-.66,4.06-4.57,6.46-9.36,6.13-4.56-.31-4.09-3.71-3.99-6.57.89-26.11,1.84-52.21,2.95-78.31.09-2.05,1.29-5.58,2.43-5.78,3.1-.53,6.52.09,9.65.88.76.19,1.23,2.81,1.26,4.32.12,8.1.06,16.2.06,24.31-.2,0-.4,0-.6,0Z"/>
+                        <path d="M476.68,22.27c-.97,1.78-1.43,3.03-2.23,4.01-3.76,4.62-7.47,9.3-11.52,13.66-.99,1.07-3.92,1.89-4.71,1.27-1.28-1.02-2.64-3.97-2.04-4.98,3.6-6.07,7.61-11.91,11.84-17.56.66-.88,3.43-.98,4.74-.38,1.56.71,2.6,2.56,3.92,3.98Z"/>
+                        <path d="M63.44,125.37c6.65.95,9.92,2.85,9.91,8.62,0,1.84,2.08,3.6,2.86,5.54.83,2.08,1.25,4.33,1.85,6.5-2.27.36-4.99,1.67-6.69.86-2.28-1.09-4.7-3.55-5.39-5.91-1.4-4.76-1.68-9.84-2.54-15.61Z"/>
+                    </g>
+                </svg>
+            </a>
+            
+            <p class="text-[11.5px] text-laleli-soft font-normal mt-1 tracking-tight">
+                Ropa para bebes de 0 a 24 meses, por mayor y por menor.
+            </p>
+
+            <!-- Ticker de Beneficios con Slide Suave y Pausado -->
+            <div class="mt-2.5 px-3.5 py-1 rounded-full bg-white/85 border border-laleli-orange/20 text-[11px] font-medium text-laleli-charcoal flex items-center gap-2 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-laleli-orange soft-dot flex-shrink-0"></span>
+                <div class="benefit-viewport">
+                    <span id="benefit-label" class="benefit-text">3 cuotas sin interés con todas las tarjetas</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- LISTADO DE BOTONES CON MATICES DE COLOR Y SEPARACIÓN CÓMODA -->
+        <nav class="flex flex-col gap-3.5 w-full">
+
+            <!-- 1. Tienda Online (Matiz Durazno / Naranja Boutique) -->
+            <a href="https://lalelibebes.mitiendanube.com/productos/" target="_blank" rel="noopener noreferrer" 
+               class="nuance-btn rounded-[22px] p-4 flex items-center gap-4 group" onclick="playClickSound()">
+                <div class="w-11 h-11 rounded-[16px] bg-gradient-to-br from-orange-400/20 to-orange-500/10 text-laleli-orange flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-orange-200/50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M12 2a3 3 0 0 0-3 3c0 .8.3 1.5.8 2.1L2 14h20L14.2 7.1c.5-.6.8-1.3.8-2.1a3 3 0 0 0-3-3z"></path>
+                        <path d="M2 14v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6"></path>
+                    </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <span class="font-semibold text-[13.5px] text-laleli-charcoal block leading-tight group-hover:text-laleli-orange transition-colors">Tienda Online</span>
+                    <span class="text-[11px] text-laleli-soft truncate block mt-0.5">Bodys, pantalones, shorts, abrigos</span>
+                </div>
+                <svg class="w-4 h-4 text-laleli-soft/40 group-hover:text-laleli-orange group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+            <!-- 2. WhatsApp Atención Directa (Matiz Salvia / Menta Calma) -->
+            <a href="https://wa.me/5491128287285" target="_blank" rel="noopener noreferrer" 
+               class="nuance-btn rounded-[22px] p-4 flex items-center gap-4 group" onclick="playWhatsAppSound()">
+                <div class="w-11 h-11 rounded-[16px] bg-gradient-to-br from-emerald-400/20 to-teal-500/10 text-laleli-salvia flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-emerald-200/50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <span class="font-semibold text-[13.5px] text-laleli-charcoal block leading-tight group-hover:text-emerald-700 transition-colors">Hablá por WhatsApp</span>
+                    <span class="text-[11px] text-laleli-soft truncate block mt-0.5">Atención directa para tu compra</span>
+                </div>
+                <svg class="w-4 h-4 text-laleli-soft/40 group-hover:text-laleli-salvia group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+            <!-- 3. Catálogo Mayoristas (Matiz Miel / Terracota) -->
+            <a href="https://wa.me/5491128287285?text=Hola!%20Tengo%20local%20o%20quiero%20revender%20Laleli,%20me%20gustaria%20recibir%20el%20catalogo%20mayorista" target="_blank" rel="noopener noreferrer" 
+               class="nuance-btn rounded-[22px] p-4 flex items-center gap-4 group" onclick="playClickSound()">
+                <div class="w-11 h-11 rounded-[16px] bg-gradient-to-br from-amber-400/20 to-orange-600/10 text-laleli-miel flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-amber-200/50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-1.5">
+                        <span class="font-semibold text-[13.5px] text-laleli-charcoal leading-tight group-hover:text-laleli-deep transition-colors">Catálogo Mayoristas</span>
+                        <span class="text-[9px] text-laleli-deep bg-amber-100/80 px-1.5 py-0.2 rounded font-medium">Exclusivo</span>
+                    </div>
+                    <span class="text-[11px] text-laleli-soft truncate block mt-0.5">Precios exclusivos para comerciantes</span>
+                </div>
+                <svg class="w-4 h-4 text-laleli-soft/40 group-hover:text-laleli-miel group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+            <!-- 4. Mercado Libre Oficial (Matiz Amarillo Cálido) -->
+            <a href="https://www.mercadolibre.com.ar/pagina/lalelibebes" target="_blank" rel="noopener noreferrer" 
+               class="nuance-btn rounded-[22px] p-4 flex items-center gap-4 group" onclick="playClickSound()">
+                <div class="w-11 h-11 rounded-[16px] bg-gradient-to-br from-yellow-300/25 to-amber-400/15 text-yellow-700 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-yellow-200/60">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <span class="font-semibold text-[13.5px] text-laleli-charcoal block leading-tight group-hover:text-yellow-800 transition-colors">Mercado Libre Oficial</span>
+                    <span class="text-[11px] text-laleli-soft truncate block mt-0.5">Te esperamos también en nuestra tienda</span>
+                </div>
+                <svg class="w-4 h-4 text-laleli-soft/40 group-hover:text-yellow-700 group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+            <!-- 5. Blog Lalelí (Matiz Lila Suave Textil) -->
+            <a href="https://lalelibebes.mitiendanube.com/blog/" target="_blank" rel="noopener noreferrer" 
+               class="nuance-btn rounded-[22px] p-4 flex items-center gap-4 group" onclick="playClickSound()">
+                <div class="w-11 h-11 rounded-[16px] bg-gradient-to-br from-purple-400/20 to-indigo-500/10 text-laleli-lila flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-purple-200/50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <span class="font-semibold text-[13.5px] text-laleli-charcoal block leading-tight group-hover:text-purple-800 transition-colors">Si te gusta leer 📝</span>
+                    <span class="text-[11px] text-laleli-soft truncate block mt-0.5">El Blog de Lalelí</span>
+                </div>
+                <svg class="w-4 h-4 text-laleli-soft/40 group-hover:text-laleli-lila group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </a>
+
+        </nav>
+
+        <!-- TARJETA UNIFICADA COMPACTA: HISTORIA + RETIRO + CONTACTO -->
+        <section class="support-card rounded-[24px] p-4 sm:p-5 flex flex-col gap-3.5 text-left border border-white">
+            
+            <!-- Frase Humana de Camila y Adrián -->
+            <div class="pb-3 border-b border-laleli-orange/15">
+                <p class="text-[11.5px] text-laleli-soft leading-relaxed italic">
+                    "Diseñamos cada una de nuestras prendas pensando en molderías simples, proporcionadas y cómodas, que se adapten a tu bebé y no lo limiten."
+                </p>
+                <span class="text-[10px] text-laleli-orange font-semibold mt-1 block tracking-wide">— Camila y Adrian, Lalelí</span>
+            </div>
+
+            <!-- Punto de Retiro con Mapa Desplegable Rápido -->
+            <div class="flex items-center justify-between text-[11.5px] text-laleli-charcoal">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-laleli-orange flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span><strong>Retiro GRATIS en Mataderos</strong> (CABA)</span>
+                </div>
+                <button type="button" onclick="document.getElementById('map-drawer').classList.toggle('hidden'); playClickSound();" 
+                        class="text-laleli-orange text-[10.5px] font-medium underline hover:text-laleli-deep focus:outline-none">
+                    Ver mapa
+                </button>
+            </div>
+
+            <!-- Mapa Compacto embebido -->
+            <div id="map-drawer" class="hidden w-full h-36 rounded-xl overflow-hidden border border-laleli-orange/20 shadow-inner transition-all">
+                <iframe 
+                    title="Punto de Retiro Mataderos"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13127.135260114064!2d-58.507616!3d-34.654516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc85b4d7e17cb%3A0x7d6c6a6f1eb3d168!2sMataderos%2C%20CABA!5e0!3m2!1ses!2sar!4v1710000000000!5m2!1ses!2sar" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <!-- Formulario de Consulta Simple -->
+            <div class="pt-2 border-t border-laleli-orange/15">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[11px] font-semibold text-laleli-charcoal">Escribinos tu consulta:</span>
+                    <a href="https://wa.me/5491128287285" target="_blank" class="text-[10.5px] text-emerald-600 font-medium hover:underline">o por WhatsApp</a>
+                </div>
+
+                <form action="mailto:laleli.babys@gmail.com" method="POST" enctype="text/plain" class="flex flex-col gap-2">
+                    <div class="flex gap-2">
+                        <input type="text" name="Nombre" placeholder="Tu nombre" required 
+                               class="w-1/2 px-3 py-2 text-[11px] rounded-xl bg-white/85 border border-laleli-orange/20 focus:border-laleli-orange focus:outline-none text-laleli-charcoal">
+                        <input type="email" name="Email" placeholder="Tu email" required 
+                               class="w-1/2 px-3 py-2 text-[11px] rounded-xl bg-white/85 border border-laleli-orange/20 focus:border-laleli-orange focus:outline-none text-laleli-charcoal">
+                    </div>
+                    <textarea name="Mensaje" rows="2" placeholder="¿En qué te podemos ayudar?" required 
+                              class="w-full px-3 py-2 text-[11px] rounded-xl bg-white/85 border border-laleli-orange/20 focus:border-laleli-orange focus:outline-none text-laleli-charcoal resize-none"></textarea>
+                    
+                    <button type="submit" onclick="playClickSound()" 
+                            class="w-full py-2 bg-gradient-to-r from-laleli-orange to-laleli-deep hover:opacity-95 text-white text-[11.5px] font-medium rounded-xl transition-all shadow-sm active:scale-[0.99]">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- FOOTER DISCRETO -->
+        <footer class="text-center text-[10px] text-laleli-soft/75 pb-4">
+            Copyright LALELÍ Babés - 2026. Todos los derechos reservados.
+        </footer>
+
+    </main>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP CON CHIP "PREGUNTAR" -->
+    <a href="https://wa.me/5491128287285?text=%C2%A1Hola%20Lalel%C3%AD%20Beb%C3%A9s!%20%F0%9F%A7%B1%20Quisiera%20hacerles%20una%20consulta." 
+       class="floating-whatsapp-wrap" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="Preguntar por WhatsApp" 
+       onclick="playWhatsAppSound()">
+        <span class="floating-label-chip">Preguntar</span>
+        <div class="floating-action-btn">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </div>
+    </a>
+
+    <!-- MOTOR DE AUDIO Y TRANSICIÓN DE BENEFICIOS -->
+    <script>
+        // 1. Audio sintetizado de respuesta táctil
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function playSynthBeep(freq = 580, duration = 0.07) {
+            try {
+                if (!audioCtx) audioCtx = new AudioContext();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playClickSound() {
+            if ('vibrate' in navigator) {
+                try { navigator.vibrate(6); } catch(e) {}
+            }
+            playSynthBeep(520, 0.05);
+        }
+
+        function playWhatsAppSound() {
+            if ('vibrate' in navigator) {
+                try { navigator.vibrate([10, 30, 12]); } catch(e) {}
+            }
+            playSynthBeep(640, 0.06);
+            setTimeout(() => playSynthBeep(840, 0.1), 70);
+        }
+
+        // 2. Transición vertical fluida y pausada para los 3 beneficios
+        const benefits = [
+            "3 cuotas sin interés con todas las tarjetas",
+            "10% Off pagando con transferencia bancaria",
+            "Envíos GRATIS en compras mayores a $100.000"
+        ];
+        let benefitIndex = 0;
+        const benefitElem = document.getElementById("benefit-label");
+
+        setInterval(() => {
+            // Desliza suavemente hacia arriba y desvanece
+            benefitElem.classList.add('slide-out');
+
+            setTimeout(() => {
+                benefitIndex = (benefitIndex + 1) % benefits.length;
+                benefitElem.innerText = benefits[benefitIndex];
+                
+                // Prepara desde abajo sin transición
+                benefitElem.classList.remove('slide-out');
+                benefitElem.classList.add('slide-in-prep');
+                
+                // Forzar reflujo de renderizado
+                void benefitElem.offsetWidth;
+
+                // Entra suavemente desde abajo a su posición original
+                benefitElem.classList.remove('slide-in-prep');
+            }, 650);
+        }, 4500); // Ritmo de lectura pausado y relajante
+    </script>
+
+</body>
+</html>
